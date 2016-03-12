@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>Potager connecté</title>
+    </head>
+    <body>
+      <h1>Fiches techniques des légumes</h1>
+
+      <!-- ////////////////////////TEST ///////////////////////////////////
+              <form action=""> 
+              <select name="customers" onchange="showCustomer(this.value)">
+              <option value="">Choissisez un légume:</option>
+              <option value="carotte">carotte</option>
+              <option value="patate">patate</option>
+              <option value="salade">salade</option>
+              </select>
+              </form>
+      //////////////////////// FIN DU TEST //////////////////////// -->
+
+<button id="carotte">Pour en savoir plus sur les carottes c'est par ici</button>
+<div id="c"></div>
+
+<button id="patate">Pour en savoir plus sur les patates c'est par ici</button>
+<div id="p"></div>
+
+<button id="salade">Pour en savoir plus sur les patates c'est par ici</button>
+<div id="s"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+         
+          
+    <script>
+    $(function() {
+
+      //CAROTTE
+        $('#carotte').click(function() {
+            $.getJSON('database.json', function(donnees) {
+            $('#c').html('<p><b>Nom</b> : ' + donnees[0].nom + '</p>');
+            $('#c').append('<p><b>Climat</b> : ' + donnees[0].climat + '</p>');
+            $('#c').append('<p><b>Naime pas</b> : ' + donnees[0].naimepas + '</p>');
+            $('#c').append('<p><b>Ennemi</b> : ' + donnees[0].ennemi + '</p>');
+         //   $("#c").toggle();
+          });
+        });  
+
+      //PATATE
+        $('#patate').click(function() {
+            $.getJSON('database.json', function(donnees) {
+            $('#p').html('<p><b>Nom</b> : ' + donnees[1].nom + '</p>');
+            $('#p').append('<p><b>Age</b> : ' + donnees[1].climat + '</p>');
+            $('#p').append('<p><b>Ville</b> : ' + donnees[1].naimepas + '</p>');
+            $('#p').append('<p><b>Domaine de compétences</b> : ' + donnees[1].ennemi + '</p>');
+          //  $("#p").toggle();            
+          });
+        });  
+
+      //SALADE
+        $('#salade').click(function() {
+            $.getJSON('database.json', function(donnees) {
+            $('#s').html('<p><b>Nom</b> : ' + donnees[2].nom + '</p>');
+            $('#s').append('<p><b>Age</b> : ' + donnees[2].climat + '</p>');
+            $('#s').append('<p><b>Ville</b> : ' + donnees[2].naimepas + '</p>');
+            $('#s').append('<p><b>Domaine de compétences</b> : ' + donnees[2].ennemi + '</p>');
+           // $("#s").toggle();            
+          });
+        });  
+
+      });
+    </script>
+
+      <!-- //////////////////////////////////////// TEST///////////////////////////////////
+        <script>
+        function showCustomer(str) {
+          var xhttp; 
+          if (str == "") {
+            document.getElementById("txtHint").innerHTML = "";
+            return;
+          }
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+            document.getElementById("txtHint").innerHTML = xhttp.responseText;
+            }
+          };
+          xhttp.open("GET", "getcustomer.asp?q="+str, true);
+          xhttp.send();
+        }
+        </script>
+        -->
+
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
+
+
+

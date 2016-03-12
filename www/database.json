@@ -1,0 +1,18 @@
+[{
+  "nom": "Carotte",
+  "climat": "Doux et humide",
+  "naimepas": "Blé, céréale, colza, chou",
+  "ennemi": "Mouche"
+},
+{
+  "nom": "Patate",
+  "climat": "Chaud",
+  "naimepas": "Tomate",
+  "ennemi": "Coccinelle"
+},
+{
+  "nom": "Salade",
+  "climat": "Tempéré",
+  "naimepas": "Canabis",
+  "ennemi": "Escargot"
+}]
