@@ -10,15 +10,19 @@
         <title>Potager connecté</title>
     </head>
     <body>
-    	<h1>Inscription</h1>
-      	<img src="img/logoentier.svg" alt="logo">
-       	<form action="#" method="POST">
-       		<label>Username</label>
-       		<input type="text" name="username"><br>
-       		<label>Mot de passe</label>
-       		<input type="text" name="mdp"><br>
-       		<input type="submit">
-       	</form>
+    	<h1>Coucou</h1>
+        <div id="meteo"></div>
+
+        <script>
+            $(document).ready(function() {
+                $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=Chamb%C3%A9ry&APPID=e69b1050a4287b8f2591f7545a2c0a07", function(result){
+                    $.each(result, function(i, field){
+                        $("#meteo").append(field + " ");
+                    });
+                });
+            });
+        </script>
+
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>
