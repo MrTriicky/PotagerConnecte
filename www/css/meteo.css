@@ -1,0 +1,151 @@
+header {
+	background-color: #ed3801;
+	height: 50px;
+}
+
+	header .hamburger {
+		height: 50px;
+		width: 50px;
+		right: 20px;
+		position: absolute;
+	}
+
+		header .hamburger span {
+		    display: inline-block;
+		    height: 50px;
+		    position: relative;
+		    vertical-align: middle;
+		    width: 40px;
+		    margin-left: 5px; margin-right: 5px;
+		}
+
+		header .hamburger span:before, 
+		header .hamburger span:after {
+		    background-color: #fff;
+		    color: #fff;
+		    content: '';
+		    display: block;
+		    height: 2px;
+		    position: absolute;
+		    top: 50%;
+		    width: 100%;
+		    -webkit-transition: all .35s ease-in-out;
+		       -moz-transition: all .35s ease-in-out;
+		        -ms-transition: all .35s ease-in-out;
+		         -o-transition: all .35s ease-in-out;
+		            transition: all .35s ease-in-out;
+		}
+
+		header .hamburger span:after {
+			border-radius: 3px;
+		    box-shadow: 0 9px 0 0, 0 -9px 0 0;
+		}
+
+		header .hamburger.active span:before {
+			-webkit-transform: rotateZ(-225deg);
+			   -moz-transform: rotateZ(-225deg);
+			    -ms-transform: rotateZ(-225deg);
+			     -o-transform: rotateZ(-225deg);
+			        transform: rotateZ(-225deg);
+		    -webkit-transition: all .35s ease-in-out;
+		       -moz-transition: all .35s ease-in-out;
+		        -ms-transition: all .35s ease-in-out;
+		         -o-transition: all .35s ease-in-out;
+		            transition: all .35s ease-in-out;		 
+		}
+
+		header .hamburger.active span:after {
+			box-shadow: 0 0 0 0, 0 0 0 0;
+			-webkit-transform: rotateZ(225deg);
+			   -moz-transform: rotateZ(225deg);
+			    -ms-transform: rotateZ(225deg);
+			     -o-transform: rotateZ(225deg);
+			        transform: rotateZ(225deg);
+		    -webkit-transition: all .35s ease-in-out;
+		       -moz-transition: all .35s ease-in-out;
+		        -ms-transition: all .35s ease-in-out;
+		         -o-transition: all .35s ease-in-out;
+		            transition: all .35s ease-in-out;
+		}
+
+#meteo {
+	background-color: #68b52c;
+	height: 50px;
+	color: white;
+}
+	
+	#meteo p {
+		line-height: 50px;
+		text-align: center;
+	}
+
+	#meteo .special {
+		color: #ed3801;
+	}
+
+nav {
+	position: absolute;
+	height: 0;
+	width: 100%;
+	overflow: hidden;
+	margin-top: 0;
+	background-color: white;
+    -webkit-transition: all .35s ease-in-out;
+       -moz-transition: all .35s ease-in-out;
+        -ms-transition: all .35s ease-in-out;
+         -o-transition: all .35s ease-in-out;
+            transition: all .35s ease-in-out;
+}
+
+nav.active {
+	margin-top: 50px;
+	height: calc(100% - 50px);
+    -webkit-transition: all .35s ease-in-out;
+       -moz-transition: all .35s ease-in-out;
+        -ms-transition: all .35s ease-in-out;
+         -o-transition: all .35s ease-in-out;
+            transition: all .35s ease-in-out;
+}
+
+	nav ul li {
+		text-align: center;
+		height: 50px;
+		line-height: 50px;
+		text-transform: uppercase;
+		color: white;
+	}
+
+	nav ul li.title {
+		background-color: #68b52c;
+	}
+
+		nav ul li a {
+			color: #ed3801;
+			text-decoration: none;
+			font-weight: 700;
+			font-size: 20px;
+		}
+
+input[type="text"] {
+	width: 80%;
+	padding: 0 5%;
+	height: 40px;
+	margin: 10px 5%;
+	background-color: white;
+	border: 0;
+}
+
+input[type="submit"] {
+	width: 90%;
+	height: 30px;
+	margin: 0 5%;
+	color: white;
+	background-color: #ed3801;
+	border: 0;
+	text-transform: uppercase;
+}
+
+
+.strong {
+	font-weight: 700;
+}
