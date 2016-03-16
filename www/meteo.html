@@ -32,11 +32,11 @@
             $( document ).ready(function() {
 
                 $.ajax({
-                    url: 'http://api.openweathermap.org/data/2.5/weather?q=' + url + '&APPID=e69b1050a4287b8f2591f7545a2c0a07',
+                    url: 'http://api.openweathermap.org/data/2.5/forecast/weather?q=' + url + '&APPID=e69b1050a4287b8f2591f7545a2c0a07',
                     dataType: 'json',
                     success: function( reponse ) {
-                                    $('.temp').html( Math.round(reponse.main.temp - 273.15) ); 
-                                    $('.ville').html( reponse.name ); 
+                                    $('.temp').html( Math.round(reponse.list[0].main.temp - 273.15) ); 
+                                    $('.ville').html( reponse.city.name ); 
                                 },
 
                     error: function( req, status, err ) {

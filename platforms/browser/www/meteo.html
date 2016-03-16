@@ -11,18 +11,43 @@
     </head>
     <body>
     	<h1>Coucou</h1>
-        <div id="meteo"></div>
 
-        <script>
-            $(document).ready(function() {
-                $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=Chamb%C3%A9ry&APPID=e69b1050a4287b8f2591f7545a2c0a07", function(result){
-                    $.each(result, function(i, field){
-                        $("#meteo").append(field + " ");
-                    });
+        <form action="" name="url">
+            
+            <input type="text" name="ville" placeholder="Votre ville">
+            <input type="submit" id="search_meteo" value="Rechercher" onclick="recupUrl(document.forms['url'].elements['ville'].value)">
+
+        </form>
+
+        <div id="meteo">
+            <p>La température actuelle est de <span class="temp"></span>°C à <span class="ville"></span>.</p>
+        </div>
+        <script type="text/javascript" src="js/libs/jquery.js"></script>
+
+        <script> 
+            var CheminComplet = document.location.href;
+            var url = CheminComplet.substring(CheminComplet.lastIndexOf( "ville" ) + 6 );
+
+            document.getElementById("search_meteo").addEventListener("click", recupUrl(document.forms['url'].elements['ville'].value));
+
+
+            $( document ).ready(function() {
+
+                $.ajax({
+                    url: 'http://api.openweathermap.org/data/2.5/weather?q=' + url + '&APPID=e69b1050a4287b8f2591f7545a2c0a07',
+                    dataType: 'json',
+                    success: function( reponse ) {
+                                    $('.temp').html( Math.round(reponse.main.temp - 273.15) ); 
+                                    $('.ville').html( reponse.name ); 
+                                },
+
+                    error: function( req, status, err ) {
+                        console.log( 'something went wrong', status, err );
+                    } 
                 });
             });
-        </script>
 
+        </script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>
