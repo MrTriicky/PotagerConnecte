@@ -33,14 +33,25 @@
                 <span class="strong">Mon-Potager-1</span> <span class="temp special"></span>°C <span class="humidite special"></span>% Hum.
                 <span id="button"><img src="img/arrows.svg" alt=""></span>
             </p>
-        </div> 
+        </div>
 
-        <form action="" name="url">
-            
-            <input type="text" name="ville" placeholder="Votre ville">
-            <input type="submit" value="Rechercher" onclick="recupUrl(document.forms['url'].elements['ville'].value)">
+        <div id="twodays" class="button">Charger les températures prévisionnelles</div>
 
-        </form>
+        <div id="demain">
+            <i class="ico"></i>
+            <h2 class="strong">DEMAIN ( 12h ) :</h2> 
+            <div>
+                <span class="temp1 special"></span>°C <span class="humidite1 special"></span>% Hum.
+            </div>
+        </div>
+
+        <div id="apres-demain">
+            <i class="ico2"></i>
+            <h2 class="strong">APRES-DEMAIN ( 12h ) :</h2>
+            <div>
+                <span class="temp2 special"></span>°C <span class="humidite2 special"></span>% Hum.
+            </div>
+        </div>
 
         <script type="text/javascript" src="js/libs/jquery.js"></script>
 
@@ -60,8 +71,6 @@
                     dataType: 'json',
                     success: function( reponse ) {
                                     urlville = reponse.city.ville; 
-                                    console.log("Fichier JSON : "+urlville);
-                                    return urlville;
                                 },
 
                     error: function( req, status, err ) {
@@ -76,9 +85,80 @@
                     url: 'http://api.openweathermap.org/data/2.5/forecast/weather?q=' + urlville + '&APPID=e69b1050a4287b8f2591f7545a2c0a07',
                     dataType: 'json',
                     success: function( reponse ) {
-                                    console.log("Avec API : "+urlville);
                                     $('.temp').html( Math.round(reponse.list[0].main.temp - 273.15) ); 
                                     $('.humidite').html( reponse.list[0].main.humidity ); 
+                                },
+
+                    error: function( req, status, err ) {
+                        console.log( 'something went wrong', status, err );
+                    } 
+                })
+            });
+
+            $("#twodays").click(function() {
+                $.ajax({
+                    url: 'http://api.openweathermap.org/data/2.5/forecast?q=' + urlville + ',us&mode=json&appid=b1b15e88fa797225412429c1c50c122a',
+                    dataType: 'json',
+                    success: function( reponse ) {
+                                    $(' #demain ').attr('style','height: auto; padding: 30px 0;');
+                                    $(' #apres-demain ').attr('style','height: auto; padding: 30px 0;');
+                                    $('.temp1').html( Math.round(reponse.list[8].main.temp - 273.15) ); 
+                                    $('.humidite1').html( reponse.list[8].main.humidity ); 
+                                    $('.temp2').html( Math.round(reponse.list[16].main.temp - 273.15) ); 
+                                    $('.humidite2').html( reponse.list[16].main.humidity ); 
+
+                                    var meteo = reponse.list[8].weather[0].main;
+                                    var meteo2 = reponse.list[16].weather[0].main;
+
+                                    console.log(meteo);
+                                    console.log(meteo2);
+
+                                    switch(meteo) {
+                                        case "Clear":
+                                            $(' .ico ').html('<img src="img/sun.png" alt="">');
+                                            break;
+
+                                        case "Clouds":
+                                            $(' #demain ').css('background-color','#498aba');
+                                            $(' .ico ').html('<img src="img/cloud.png" alt="">');
+                                            break;
+
+                                        case "Rain":
+                                            $(' #apres-demain ').css('background-color','#244a66');
+                                            $(' .ico ').html('<img src="img/rain.png" alt="">');
+                                            break;
+                                    }
+
+                                    switch(meteo2) {
+                                        case "Clear":
+                                            $(' .ico2 ').html('<img src="img/sun.png" alt="">');
+                                            break;
+
+                                        case "Clouds":
+                                            $(' #demain ').css('background-color','#498aba');
+                                            $(' .ico2 ').html('<img src="img/cloud.png" alt="">');
+                                            break;
+
+                                        case "Rain":
+                                            $(' #apres-demain ').css('background-color','#244a66');
+                                            $(' .ico2 ').html('<img src="img/rain.png" alt="">');
+                                            break;
+                                    }
+                                    /*
+                                    if (meteo == "Clouds") {
+                                        $(' #demain ').css('background-color','#498aba');
+                                        $(' .ico ').html('<img src="img/cloud.png" alt="">');
+                                    };
+
+                                    if (meteo == "Clouds") {
+                                        $(' #demain ').css('background-color','#498aba');
+                                        $(' .ico ').html('<img src="img/cloud.png" alt="">');
+                                    };
+
+                                    if (meteo2 == "Rain") {
+                                        $(' #apres-demain ').css('background-color','#244a66');
+                                        $(' .ico2 ').html('<img src="img/rain.png" alt="">');
+                                    };*/
                                 },
 
                     error: function( req, status, err ) {

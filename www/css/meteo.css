@@ -1,3 +1,9 @@
+
+
+.special {
+	color: #ed3801;
+}
+
 header {
 	background-color: #ed3801;
 	height: 50px;
@@ -79,10 +85,6 @@ header {
 		text-align: center;
 	}
 
-	#meteo .special {
-		color: #ed3801;
-	}
-
 	#meteo #button img {
 		background: url(../img/arrows.png) no-repeat center;
 		width: 12.5px; height: 12.5px;
@@ -143,16 +145,57 @@ input[type="text"] {
 	border: 0;
 }
 
-input[type="submit"] {
-	width: 90%;
-	height: 30px;
-	margin: 0 5%;
+.button {
+	width: 90%; 
+	margin: 10px 5%;
 	color: white;
 	background-color: #ed3801;
 	border: 0;
 	text-transform: uppercase;
+	text-align: center;
+	line-height: 30px;
 }
 
+#demain,
+#apres-demain {
+	overflow: hidden;
+	width: 40%; height: 0;
+	margin: 10px 5%; 
+	color: white;
+	background-color: #5ab8ff;
+	border: 0;
+	text-transform: uppercase;
+	text-align: center;
+	line-height: 30px;	
+	float: left;
+    -webkit-transition: all .35s ease-in-out;
+       -moz-transition: all .35s ease-in-out;
+        -ms-transition: all .35s ease-in-out;
+         -o-transition: all .35s ease-in-out;
+            transition: all .35s ease-in-out;
+}
+
+.ico img,
+.ico2 img {
+	width: 50px; height: 50px;
+	display: block;
+	margin: 0 auto;
+	padding-bottom: 20px;
+}
+
+#demain h2,
+#apres-demain h2 {
+	font-size: 18px;
+}
+
+#demain .special,
+#apres-demain .special {
+	font-size: 16px;
+}
+
+#twodays {
+	cursor: pointer;
+}
 
 .strong {
 	font-weight: 700;
