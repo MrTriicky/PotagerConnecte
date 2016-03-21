@@ -29,7 +29,10 @@
         </header>
 
         <div id="meteo">
-            <p><span class="strong">Mon-Potager-1</span> <span class="temp special"></span>°C <span class="humidite special"></span>% Hum.</p>
+            <p>
+                <span class="strong">Mon-Potager-1</span> <span class="temp special"></span>°C <span class="humidite special"></span>% Hum.
+                <span id="button"><img src="img/arrows.svg" alt=""></span>
+            </p>
         </div> 
 
         <form action="" name="url">
@@ -38,6 +41,7 @@
             <input type="submit" value="Rechercher" onclick="recupUrl(document.forms['url'].elements['ville'].value)">
 
         </form>
+
         <script type="text/javascript" src="js/libs/jquery.js"></script>
 
         <script> 
@@ -47,16 +51,32 @@
                 $('nav').toggleClass('active');
             });
 
-            var CheminComplet = document.location.href;
-            var url = CheminComplet.substring(CheminComplet.lastIndexOf( "ville" ) + 6 );
+            var urlville = "";
 
-
-            $( document ).ready(function() {
+            $( document ).ready(function() {  
 
                 $.ajax({
-                    url: 'http://api.openweathermap.org/data/2.5/forecast/weather?q=' + url + '&APPID=e69b1050a4287b8f2591f7545a2c0a07',
+                    url: 'json/weather.json',
                     dataType: 'json',
                     success: function( reponse ) {
+                                    urlville = reponse.city.ville; 
+                                    console.log("Fichier JSON : "+urlville);
+                                    return urlville;
+                                },
+
+                    error: function( req, status, err ) {
+                        console.log( 'something went wrong', status, err );
+                    } 
+                });
+
+            });
+
+            $("#button img").click(function() {
+                $.ajax({
+                    url: 'http://api.openweathermap.org/data/2.5/forecast/weather?q=' + urlville + '&APPID=e69b1050a4287b8f2591f7545a2c0a07',
+                    dataType: 'json',
+                    success: function( reponse ) {
+                                    console.log("Avec API : "+urlville);
                                     $('.temp').html( Math.round(reponse.list[0].main.temp - 273.15) ); 
                                     $('.humidite').html( reponse.list[0].main.humidity ); 
                                 },
@@ -64,7 +84,7 @@
                     error: function( req, status, err ) {
                         console.log( 'something went wrong', status, err );
                     } 
-                });
+                })
             });
 
         </script>

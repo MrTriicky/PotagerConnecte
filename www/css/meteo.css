@@ -83,6 +83,14 @@ header {
 		color: #ed3801;
 	}
 
+	#meteo #button img {
+		background: url(../img/arrows.png) no-repeat center;
+		width: 12.5px; height: 12.5px;
+		display: inline-block;
+		margin-left: 10px; margin-bottom: -1px;
+		cursor: pointer;
+	}
+
 nav {
 	position: absolute;
 	height: 0;
