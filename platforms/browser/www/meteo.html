@@ -2,49 +2,152 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' ">
+
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/meteo.css">
         <title>Potager connecté</title>
     </head>
     <body>
-    	<h1>Coucou</h1>
-
-        <form action="" name="url">
-            
-            <input type="text" name="ville" placeholder="Votre ville">
-            <input type="submit" id="search_meteo" value="Rechercher" onclick="recupUrl(document.forms['url'].elements['ville'].value)">
-
-        </form>
+    	<header>
+            <div class="hamburger">
+                <span></span>
+            </div> 
+            <nav>
+                <ul>
+                    <li class="title">Menu</li>
+                    <li><a href="#">Paramètres</a></li>
+                    <li><a href="pagelegume.html">Fiches techniques</a></li>
+                    <li><a href="index.html">Mes potagers</a></li>
+                    <li><a href="meteo.html">Météo</a></li>
+                </ul>
+            </nav>
+        </header>
 
         <div id="meteo">
-            <p>La température actuelle est de <span class="temp"></span>°C à <span class="ville"></span>.</p>
+            <p>
+                <span class="strong pr">Mon-Potager-1</span> <span class="temp special">? </span>°C <span class="humidite special">? </span>% Hum.
+                <span id="button"><img src="img/arrows.svg" alt=""></span>
+            </p>
         </div>
+
+        <div id="twodays" class="button">Charger les températures prévisionnelles</div>
+
+        <div id="demain">
+            <i class="ico"></i>
+            <h2 class="strong">DEMAIN ( 12h ) :</h2> 
+            <div>
+                <span class="temp1 special"></span>°C <span class="humidite1 special"></span>% Hum.
+            </div>
+        </div>
+
+        <div id="apres-demain">
+            <i class="ico2"></i>
+            <h2 class="strong">APRES-DEMAIN ( 12h ) :</h2>
+            <div>
+                <span class="temp2 special"></span>°C <span class="humidite2 special"></span>% Hum.
+            </div>
+        </div>
+
         <script type="text/javascript" src="js/libs/jquery.js"></script>
 
         <script> 
-            var CheminComplet = document.location.href;
-            var url = CheminComplet.substring(CheminComplet.lastIndexOf( "ville" ) + 6 );
 
-            document.getElementById("search_meteo").addEventListener("click", recupUrl(document.forms['url'].elements['ville'].value));
+            $('.hamburger').click(function() {
+                $('.hamburger').toggleClass('active');
+                $('nav').toggleClass('active');
+            });
 
+            var urlville = "";
 
-            $( document ).ready(function() {
+            $( document ).ready(function() {  
 
                 $.ajax({
-                    url: 'http://api.openweathermap.org/data/2.5/weather?q=' + url + '&APPID=e69b1050a4287b8f2591f7545a2c0a07',
+                    url: 'json/weather.json',
                     dataType: 'json',
                     success: function( reponse ) {
-                                    $('.temp').html( Math.round(reponse.main.temp - 273.15) ); 
-                                    $('.ville').html( reponse.name ); 
+                                    urlville = reponse.city.ville; 
                                 },
 
                     error: function( req, status, err ) {
                         console.log( 'something went wrong', status, err );
                     } 
                 });
+
+            });
+
+            $("#button img").click(function() {
+                $.ajax({
+                    url: 'http://api.openweathermap.org/data/2.5/forecast/weather?q=' + urlville + '&APPID=e69b1050a4287b8f2591f7545a2c0a07',
+                    dataType: 'json',
+                    success: function( reponse ) {
+                                    $('.temp').html( Math.round(reponse.list[0].main.temp - 273.15) ); 
+                                    $('.humidite').html( reponse.list[0].main.humidity ); 
+                                },
+
+                    error: function( req, status, err ) {
+                        console.log( 'something went wrong', status, err );
+                    } 
+                })
+            });
+
+            $("#twodays").click(function() {
+                $.ajax({
+                    url: 'http://api.openweathermap.org/data/2.5/forecast?q=' + urlville + ',us&mode=json&appid=e69b1050a4287b8f2591f7545a2c0a07',
+                    dataType: 'json',
+                    success: function( reponse ) {
+                                    $(' #demain ').attr('style','height: auto; padding: 30px 0;');
+                                    $(' #apres-demain ').attr('style','height: auto; padding: 30px 0;');
+                                    $('.temp1').html( Math.round(reponse.list[8].main.temp - 273.15) ); 
+                                    $('.humidite1').html( reponse.list[8].main.humidity ); 
+                                    $('.temp2').html( Math.round(reponse.list[16].main.temp - 273.15) ); 
+                                    $('.humidite2').html( reponse.list[16].main.humidity ); 
+
+                                    var meteo = reponse.list[8].weather[0].main;
+                                    var meteo2 = reponse.list[16].weather[0].main;
+
+                                    switch(meteo) {
+                                        case "Clear":
+                                            $(' .ico ').html('<img src="img/sun.png" alt="">');
+                                            break;
+
+                                        case "Clouds":
+                                            $(' #demain ').css('background-color','#498aba');
+                                            $(' .ico ').html('<img src="img/cloud.png" alt="">');
+                                            break;
+
+                                        case "Rain":
+                                            $(' #demain ').css('background-color','#244a66');
+                                            $(' .ico ').html('<img src="img/rain.png" alt="">');
+                                            break;
+                                    }
+
+                                    switch(meteo2) {
+                                        case "Clear":
+                                            $(' .ico2 ').html('<img src="img/sun.png" alt="">');
+                                            break;
+
+                                        case "Clouds":
+                                            $(' #apres-demain ').css('background-color','#498aba');
+                                            $(' .ico2 ').html('<img src="img/cloud.png" alt="">');
+                                            break;
+
+                                        case "Rain":
+                                            $(' #apres-demain ').css('background-color','#244a66');
+                                            $(' .ico2 ').html('<img src="img/rain.png" alt="">');
+                                            break;
+                                    }
+                                },
+
+                    error: function( req, status, err ) {
+                        console.log( 'something went wrong', status, err );
+                    } 
+                })
             });
 
         </script>

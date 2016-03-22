@@ -79,7 +79,7 @@
 
       //CAROTTE
         $('#carotte').click(function() {
-            $.getJSON('database.json', function(donnees) {
+            $.getJSON('json/database.json', function(donnees) {
             $('#c').html('<h1>Nom</h1><p>' + donnees[0].nom + '</p>');
             $('#c').append('<h1>Climat</h1><p>' + donnees[0].climat + '</p>');
             $('#c').append('<h1>Naime pas</h1><p>' + donnees[0].naimepas + '</p>');
@@ -93,7 +93,7 @@
 
       //SALADE
         $('#salade').click(function() {
-            $.getJSON('database.json', function(donnees) {
+            $.getJSON('json/database.json', function(donnees) {
             $('#s').html('<h1>Nom</h1><p>' + donnees[1].nom + '</p>');
             $('#s').append('<h1>Climat</h1><p>' + donnees[1].climat + '</p>');
             $('#s').append('<h1>Naime pas</h1><p>' + donnees[1].naimepas + '</p>');
@@ -107,7 +107,7 @@
 
       //TOMATE
         $('#tomate').click(function() {
-            $.getJSON('database.json', function(donnees) {
+            $.getJSON('json/database.json', function(donnees) {
             $('#t').html('<h1>Nom</h1><p>' + donnees[2].nom + '</p>');
             $('#t').append('<h1>Climat</h1><p>' + donnees[2].climat + '</p>');
             $('#t').append('<h1>Naime pas</h1><p>' + donnees[2].naimepas + '</p>');
