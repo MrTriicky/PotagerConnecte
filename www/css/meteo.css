@@ -88,14 +88,14 @@ header {
 	}
 
 	#meteo #button img {
-    background-color: white;
-    width: 12.5px;
-    height: 12.5px;
-    display: inline-block;
-    margin-bottom: -6px;
-    padding: 5px;
-    cursor: pointer;
-    border-radius: 100%;
+	    background-color: white;
+	    width: 12.5px;
+	    height: 12.5px;
+	    display: inline-block;
+	    margin-bottom: -6px;
+	    padding: 5px;
+	    cursor: pointer;
+	    border-radius: 100%;
 	}
 
 nav {

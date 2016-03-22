@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' ">
+
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/meteo.css">
+        <link rel="stylesheet" type="text/css" href="css/pagelegume.css">
+        <title>Potager connecté</title>
+    </head>
+    <body>
+      <header>
+            <div class="hamburger">
+                <span></span>
+            </div> 
+            <nav>
+                <ul>
+                    <li class="title">Menu</li>
+                    <li><a href="#">Paramètres</a></li>
+                    <li><a href="pagelegume.html">Fiches techniques</a></li>
+                    <li><a href="#">Mes potagers</a></li>
+                    <li><a href="meteo.html">Météo</a></li>
+                    <li><a href="#">Déconnexion</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div id="meteo">
+            <p>
+                <span class="strong">Mon-Potager-1</span> <span class="temp special">? </span>°C <span class="humidite special">? </span>% Hum.
+                <span id="button"><img src="img/arrows.svg" alt=""></span>
+            </p>
+        </div>
+
+      <h1>Fiches techniques des légumes</h1>
+
+      <!-- ////////////////////////TEST ///////////////////////////////////
+              <form action=""> 
+              <select name="customers" onchange="showCustomer(this.value)">
+              <option value="">Choissisez un légume:</option>
+              <option value="carotte">carotte</option>
+              <option value="patate">patate</option>
+              <option value="salade">salade</option>
+              </select>
+              </form>
+      //////////////////////// FIN DU TEST //////////////////////// -->
+
+
+    <div class="bloc_veg1">
+        <img class="img_veg" id="carotte" src="img/carotte.svg" alt="logo_carotte"></img>
+        <h1 class="title_veg">la carotte <br/><span>Fiche technique</span> </h1>
+        <div class="contenu barre" id="c"></div>
+    </div>
+
+
+    <div class="bloc_veg2">
+        <img class="img_veg" id="salade" src="img/salade.svg" alt="logo_salade"></img>
+        <h1 class="title_veg">la salade <br/><span>Fiche technique</span> </h1>
+        <div class="contenu barre" id="s"></div>
+    </div>
+
+    <div class="bloc_veg3">
+       <img class="img_veg" id="tomate" src="img/tomate.svg" alt="logo_tomate"></img>
+       <h1 class="title_veg">la tomate <br/><span>Fiche technique</span> </h1>
+       <div class="contenu barre" id="t"></div>
+    </div>
+
+        <script type="text/javascript" src="js/libs/jquery.js"></script>
+
+         
+          
+    <script>
+
+
+      //CAROTTE
+        $('#carotte').click(function() {
+            $.getJSON('database.json', function(donnees) {
+            $('#c').html('<h1>Nom</h1><p>' + donnees[0].nom + '</p>');
+            $('#c').append('<h1>Climat</h1><p>' + donnees[0].climat + '</p>');
+            $('#c').append('<h1>Naime pas</h1><p>' + donnees[0].naimepas + '</p>');
+            $('#c').append('<h1>Ennemi</h1><p>' + donnees[0].ennemi + '</p>');
+            $("#c").toggleClass("active");
+            $(".title_veg").toggleClass("active");
+            $(".bloc_veg2").toggleClass("active");
+            $(".bloc_veg3").toggleClass("active");
+          });
+        });  
+
+      //SALADE
+        $('#salade').click(function() {
+            $.getJSON('database.json', function(donnees) {
+            $('#s').html('<h1>Nom</h1><p>' + donnees[1].nom + '</p>');
+            $('#s').append('<h1>Climat</h1><p>' + donnees[1].climat + '</p>');
+            $('#s').append('<h1>Naime pas</h1><p>' + donnees[1].naimepas + '</p>');
+            $('#s').append('<h1>Ennemi</h1><p>' + donnees[1].ennemi + '</p>');
+            $("#s").toggleClass("active"); 
+            $(".title_veg").toggleClass("active");
+            $(".bloc_veg1").toggleClass("active");
+            $(".bloc_veg3").toggleClass("active");         
+          });
+        });  
+
+      //TOMATE
+        $('#tomate').click(function() {
+            $.getJSON('database.json', function(donnees) {
+            $('#t').html('<h1>Nom</h1><p>' + donnees[2].nom + '</p>');
+            $('#t').append('<h1>Climat</h1><p>' + donnees[2].climat + '</p>');
+            $('#t').append('<h1>Naime pas</h1><p>' + donnees[2].naimepas + '</p>');
+            $('#t').append('<h1>Ennemi</h1><p>' + donnees[2].ennemi + '</p>');
+            $("#t").toggleClass("active"); 
+            $(".title_veg").toggleClass("active");
+            $(".bloc_veg1").toggleClass("active");
+            $(".bloc_veg2").toggleClass("active");             
+          });
+        });  
+
+    </script>
+
+      <!-- //////////////////////////////////////// TEST///////////////////////////////////
+        <script>
+        function showCustomer(str) {
+          var xhttp; 
+          if (str == "") {
+            document.getElementById("txtHint").innerHTML = "";
+            return;
+          }
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+            document.getElementById("txtHint").innerHTML = xhttp.responseText;
+            }
+          };
+          xhttp.open("GET", "getcustomer.asp?q="+str, true);
+          xhttp.send();
+        }
+        </script>
+        -->
+
+                <script> 
+
+            $('.hamburger').click(function() {
+                $('.hamburger').toggleClass('active');
+                $('nav').toggleClass('active');
+            });
+
+            var urlville = "";
+
+            $( document ).ready(function() {  
+
+                $.ajax({
+                    url: 'json/weather.json',
+                    dataType: 'json',
+                    success: function( reponse ) {
+                                    urlville = reponse.city.ville; 
+                                },
+
+                    error: function( req, status, err ) {
+                        console.log( 'something went wrong', status, err );
+                    } 
+                });
+
+            });
+
+            $("#button img").click(function() {
+                $.ajax({
+                    url: 'http://api.openweathermap.org/data/2.5/forecast/weather?q=' + urlville + '&APPID=e69b1050a4287b8f2591f7545a2c0a07',
+                    dataType: 'json',
+                    success: function( reponse ) {
+                                    $('.temp').html( Math.round(reponse.list[0].main.temp - 273.15) ); 
+                                    $('.humidite').html( reponse.list[0].main.humidity ); 
+                                },
+
+                    error: function( req, status, err ) {
+                        console.log( 'something went wrong', status, err );
+                    } 
+                })
+            });
+        </script>
+
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
+
+
+
