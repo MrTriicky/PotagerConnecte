@@ -73,6 +73,7 @@ header {
 		}
 
 #meteo {
+	font-family: 'PoetsenOne-Regular';
 	background-color: #68b52c;
 	height: 50px;
 	color: white;
@@ -122,8 +123,18 @@ nav.active {
             transition: all .35s ease-in-out;
 }
 
-	nav ul li {
+	nav ul li:first-child {
+		font-family: 'PoetsenOne-Regular';
 		text-align: center;
+		padding-left: 0;
+	}
+
+	nav ul li:nth-child(2) {
+		margin-top: 60px;
+	}
+
+	nav ul li {
+		padding-left: 30px;
 		height: 50px;
 		line-height: 50px;
 		text-transform: uppercase;
@@ -138,7 +149,7 @@ nav.active {
 			color: #ed3801;
 			text-decoration: none;
 			font-weight: 700;
-			font-size: 20px;
+			font-size: 16px;
 		}
 
 input[type="text"] {
@@ -194,10 +205,12 @@ input[type="text"] {
 
 #demain .special,
 #apres-demain .special {
+	font-family: 'PoetsenOne-Regular';
 	font-size: 16px;
 }
 
 #twodays {
+	font-family: 'PoetsenOne-Regular';
 	cursor: pointer;
 }
 
