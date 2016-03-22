@@ -2,7 +2,9 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' ">
+
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
@@ -22,7 +24,7 @@
                     <li><a href="#">Paramètres</a></li>
                     <li><a href="#">Fiches techniques</a></li>
                     <li><a href="#">Mes potagers</a></li>
-                    <li><a href="#">Météo</a></li>
+                    <li><a href="meteo.html">Météo</a></li>
                     <li><a href="#">Déconnexion</a></li>
                 </ul>
             </nav>
@@ -30,7 +32,7 @@
 
         <div id="meteo">
             <p>
-                <span class="strong">Mon-Potager-1</span> <span class="temp special"></span>°C <span class="humidite special"></span>% Hum.
+                <span class="strong">Mon-Potager-1</span> <span class="temp special">? </span>°C <span class="humidite special">? </span>% Hum.
                 <span id="button"><img src="img/arrows.svg" alt=""></span>
             </p>
         </div>
@@ -110,9 +112,6 @@
                                     var meteo = reponse.list[8].weather[0].main;
                                     var meteo2 = reponse.list[16].weather[0].main;
 
-                                    console.log(meteo);
-                                    console.log(meteo2);
-
                                     switch(meteo) {
                                         case "Clear":
                                             $(' .ico ').html('<img src="img/sun.png" alt="">');
@@ -124,7 +123,7 @@
                                             break;
 
                                         case "Rain":
-                                            $(' #apres-demain ').css('background-color','#244a66');
+                                            $(' #demain ').css('background-color','#244a66');
                                             $(' .ico ').html('<img src="img/rain.png" alt="">');
                                             break;
                                     }
@@ -135,7 +134,7 @@
                                             break;
 
                                         case "Clouds":
-                                            $(' #demain ').css('background-color','#498aba');
+                                            $(' #apres-demain ').css('background-color','#498aba');
                                             $(' .ico2 ').html('<img src="img/cloud.png" alt="">');
                                             break;
 
@@ -144,21 +143,6 @@
                                             $(' .ico2 ').html('<img src="img/rain.png" alt="">');
                                             break;
                                     }
-                                    /*
-                                    if (meteo == "Clouds") {
-                                        $(' #demain ').css('background-color','#498aba');
-                                        $(' .ico ').html('<img src="img/cloud.png" alt="">');
-                                    };
-
-                                    if (meteo == "Clouds") {
-                                        $(' #demain ').css('background-color','#498aba');
-                                        $(' .ico ').html('<img src="img/cloud.png" alt="">');
-                                    };
-
-                                    if (meteo2 == "Rain") {
-                                        $(' #apres-demain ').css('background-color','#244a66');
-                                        $(' .ico2 ').html('<img src="img/rain.png" alt="">');
-                                    };*/
                                 },
 
                     error: function( req, status, err ) {
