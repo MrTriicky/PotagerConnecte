@@ -25,7 +25,6 @@
                     <li><a href="pagelegume.html">Fiches techniques</a></li>
                     <li><a href="index.html">Mes potagers</a></li>
                     <li><a href="meteo.html">Météo</a></li>
-                    <li><a href="#">Déconnexion</a></li>
                 </ul>
             </nav>
         </header>
@@ -99,7 +98,7 @@
 
             $("#twodays").click(function() {
                 $.ajax({
-                    url: 'http://api.openweathermap.org/data/2.5/forecast?q=' + urlville + ',us&mode=json&appid=b1b15e88fa797225412429c1c50c122a',
+                    url: 'http://api.openweathermap.org/data/2.5/forecast?q=' + urlville + ',us&mode=json&appid=e69b1050a4287b8f2591f7545a2c0a07',
                     dataType: 'json',
                     success: function( reponse ) {
                                     $(' #demain ').attr('style','height: auto; padding: 30px 0;');
