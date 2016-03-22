@@ -61,9 +61,20 @@ h1.title_veg.active{
 /* --------------Caché / afficher au clique  ----------------*/
 
 #c, #s, #t, h1.title_veg{
-	display: none;
+	height: 0;
+	overflow: hidden;
+    -webkit-transition: all .35s ease-in-out;
+       -moz-transition: all .35s ease-in-out;
+        -ms-transition: all .35s ease-in-out;
+         -o-transition: all .35s ease-in-out;
+            transition: all .35s ease-in-out;
 }
 
-#c.active, #s.active, #t.active,  .title_veg.active{
-	display: block;
+#c.active, #s.active, #t.active, .title_veg.active{
+	height: auto;
+    -webkit-transition: all .35s ease-in-out;
+       -moz-transition: all .35s ease-in-out;
+        -ms-transition: all .35s ease-in-out;
+         -o-transition: all .35s ease-in-out;
+            transition: all .35s ease-in-out;
 }
