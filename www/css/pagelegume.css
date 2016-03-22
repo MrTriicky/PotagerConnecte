@@ -61,6 +61,7 @@ h1.title_veg.active{
 /* --------------Caché / afficher au clique  ----------------*/
 
 #c, #s, #t, h1.title_veg{
+<<<<<<< HEAD
 	height: 0;
 	overflow: hidden;
     -webkit-transition: all .35s ease-in-out;
@@ -77,4 +78,11 @@ h1.title_veg.active{
         -ms-transition: all .35s ease-in-out;
          -o-transition: all .35s ease-in-out;
             transition: all .35s ease-in-out;
+=======
+	display: none;
+}
+
+#c.active, #s.active, #t.active,  .title_veg.active{
+	display: block;
+>>>>>>> c544e2cdcde5dc61355470e314fd6d6cf356c49d
 }
