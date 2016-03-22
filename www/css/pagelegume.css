@@ -1,0 +1,69 @@
+/* --------------Afficher/Cacher bloc légumes ----------------*/
+
+[class*="bloc_veg"] {
+	display: block;
+}
+
+[class*="bloc_veg"].active {
+	display: none;
+}
+
+/* --------------Image des légumes ----------------*/
+
+.img_veg{
+	width: 15%;
+	margin:  0 calc(54%/6) 0 calc(54%/6);
+	float: left;
+}
+
+/* --------------Titre du légume ----------------*/
+
+h1.title_veg.active span{
+	color:#ED3801;
+	font-family: "Open Sans";
+	font-weight: 600;
+}
+
+h1.title_veg.active{
+	float: left;
+	color:#68B52C;
+	text-align: inherit;
+}
+
+/* --------------Barre ----------------*/
+
+.barre{
+	border-top: 1px solid #ED3801;
+}
+
+/* --------------Decription du légume ----------------*/
+
+#c h1, #s h1, #t h1{
+	color:#ED3801;
+	font-family: "Open Sans";
+	font-weight: 600;
+	text-align: inherit;
+}
+
+#c p, #s p, #t p{
+	color:#414140;
+	font-family: "Open Sans";
+	font-weight: 400;
+	text-align: inherit;
+}
+
+.contenu{
+	float: left;
+	width: 80%;
+	margin:50px 10% 0 10%;
+}
+
+/* --------------Caché / afficher au clique  ----------------*/
+
+#c, #s, #t, h1.title_veg{
+	display: none;
+}
+
+#c.active, #s.active, #t.active,  .title_veg.active{
+	display: block;
+}

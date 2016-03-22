@@ -1,18 +1,18 @@
 [{
   "nom": "Carotte",
-  "climat": "Doux et humide",
-  "naimepas": "Blé, céréale, colza, chou",
-  "ennemi": "Mouche"
-},
-{
-  "nom": "Patate",
-  "climat": "Chaud",
-  "naimepas": "Tomate",
-  "ennemi": "Coccinelle"
+  "climat": "Un climat doux et humide est favorable à la culture.<br/> Cependant la racine résiste à des températures de -4 à -3°C, mais des défauts de coloration peuvent apparaître.",
+  "naimepas": "Les légumes de la même famille (céleri, fenouil,…).<br/> Ceux exigeants en matière organique (par exemple le chou). <br/> Les céréales (en particulier le blé), le colza, les haricots et la prairie sont déconseillés.",
+  "ennemi": "Le ravageur le plus fréquent est la mouche de la carotte.  <br/> La culture est donc protégée grâce à un voile « P17 ». <br/>Pour les autres ravageurs, il n’y a pas de problèmes."
 },
 {
   "nom": "Salade",
-  "climat": "Tempéré",
-  "naimepas": "Canabis",
-  "ennemi": "Escargot"
+  "climat": "la salade peut se cultiver sur tout type de sol et l’altitude peut varier entre 200 et 600 m. <br/> Il est conseillé de la produire dans des zones ensoleillées. La salade gèle à –5°C ", 
+  "naimepas": " Le poivron, les fleurs ",
+  "ennemi": "ver blanc: Dégâts sur le collet, entraine la mort du végétal.<br/> taupin : Flétrissement et dépérissements des plantes suite à une attaque larvaire sur les racines  et le collet <br/> campagnol et limace: Consomment les feuilles de la salade à tous les stades, dégâts très importants en début de culture."
+},
+{
+  "nom": "Tomate",
+  "climat": "la tomate est très sensible au froid, elle craint le gel et est exigeante en température",
+  "naimepas": "pomme de terre, aubergine",
+  "ennemi": "Principaux ravageurs : - aleurodes : Lâchés d’Encarsia Formosa (petite guêpe qui pond dans les larves) et de Macrolophus (punaise verte) <br/> - pucerons : Lâchés, lors d’attaques importantes, d’Aphelinus (qui pond dans les pucerons) et de Coccinelle Adalia, (coccinelle tropicale qui ne se reproduit pas), intéressante au coup par coup pour un nettoyage <br/> - punaises noires : début d’apparition sur l’Aveyron. Elles piquent le fruit ce qui le déprécie, lutte manuelle, car il n’y a pas de prédateur (en recherche).<br/> - noctuelles totalita : elle pond dans la tomate, pas de présence encore sur la région" 
 }]

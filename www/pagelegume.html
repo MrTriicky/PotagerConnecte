@@ -5,10 +5,12 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/pagelegume.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>Potager connecté</title>
     </head>
     <body>
+
       <h1>Fiches techniques des légumes</h1>
 
       <!-- ////////////////////////TEST ///////////////////////////////////
@@ -22,16 +24,27 @@
               </form>
       //////////////////////// FIN DU TEST //////////////////////// -->
 
-<button id="carotte">Pour en savoir plus sur les carottes c'est par ici</button>
-<div id="c"></div>
 
-<button id="patate">Pour en savoir plus sur les patates c'est par ici</button>
-<div id="p"></div>
+    <div class="bloc_veg1">
+        <img class="img_veg" id="carotte" src="img/carotte.svg" alt="logo_carotte"></img>
+        <h1 class="title_veg">la carotte <br/><span>Fiche technique</span> </h1>
+        <div class="contenu barre" id="c"></div>
+    </div>
 
-<button id="salade">Pour en savoir plus sur les patates c'est par ici</button>
-<div id="s"></div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <div class="bloc_veg2">
+        <img class="img_veg" id="salade" src="img/salade.svg" alt="logo_salade"></img>
+        <h1 class="title_veg">la salade <br/><span>Fiche technique</span> </h1>
+        <div class="contenu barre" id="s"></div>
+    </div>
+
+    <div class="bloc_veg3">
+       <img class="img_veg" id="tomate" src="img/tomate.svg" alt="logo_tomate"></img>
+       <h1 class="title_veg">la tomate <br/><span>Fiche technique</span> </h1>
+       <div class="contenu barre" id="t"></div>
+    </div>
+
+<script src="js/jquery-1.10.2.min.js"></script>
          
           
     <script>
@@ -40,33 +53,42 @@
       //CAROTTE
         $('#carotte').click(function() {
             $.getJSON('database.json', function(donnees) {
-            $('#c').html('<p><b>Nom</b> : ' + donnees[0].nom + '</p>');
-            $('#c').append('<p><b>Climat</b> : ' + donnees[0].climat + '</p>');
-            $('#c').append('<p><b>Naime pas</b> : ' + donnees[0].naimepas + '</p>');
-            $('#c').append('<p><b>Ennemi</b> : ' + donnees[0].ennemi + '</p>');
-         //   $("#c").toggle();
-          });
-        });  
-
-      //PATATE
-        $('#patate').click(function() {
-            $.getJSON('database.json', function(donnees) {
-            $('#p').html('<p><b>Nom</b> : ' + donnees[1].nom + '</p>');
-            $('#p').append('<p><b>Age</b> : ' + donnees[1].climat + '</p>');
-            $('#p').append('<p><b>Ville</b> : ' + donnees[1].naimepas + '</p>');
-            $('#p').append('<p><b>Domaine de compétences</b> : ' + donnees[1].ennemi + '</p>');
-          //  $("#p").toggle();            
+            $('#c').html('<h1>Nom</h1><p>' + donnees[0].nom + '</p>');
+            $('#c').append('<h1>Climat</h1><p>' + donnees[0].climat + '</p>');
+            $('#c').append('<h1>Naime pas</h1><p>' + donnees[0].naimepas + '</p>');
+            $('#c').append('<h1>Ennemi</h1><p>' + donnees[0].ennemi + '</p>');
+            $("#c").toggleClass("active");
+            $(".title_veg").toggleClass("active");
+            $(".bloc_veg2").toggleClass("active");
+            $(".bloc_veg3").toggleClass("active");
           });
         });  
 
       //SALADE
         $('#salade').click(function() {
             $.getJSON('database.json', function(donnees) {
-            $('#s').html('<p><b>Nom</b> : ' + donnees[2].nom + '</p>');
-            $('#s').append('<p><b>Age</b> : ' + donnees[2].climat + '</p>');
-            $('#s').append('<p><b>Ville</b> : ' + donnees[2].naimepas + '</p>');
-            $('#s').append('<p><b>Domaine de compétences</b> : ' + donnees[2].ennemi + '</p>');
-           // $("#s").toggle();            
+            $('#s').html('<h1>Nom</h1><p>' + donnees[1].nom + '</p>');
+            $('#s').append('<h1>Climat</h1><p>' + donnees[1].climat + '</p>');
+            $('#s').append('<h1>Naime pas</h1><p>' + donnees[1].naimepas + '</p>');
+            $('#s').append('<h1>Ennemi</h1><p>' + donnees[1].ennemi + '</p>');
+            $("#s").toggleClass("active"); 
+            $(".title_veg").toggleClass("active");
+            $(".bloc_veg1").toggleClass("active");
+            $(".bloc_veg3").toggleClass("active");         
+          });
+        });  
+
+      //TOMATE
+        $('#tomate').click(function() {
+            $.getJSON('database.json', function(donnees) {
+            $('#t').html('<h1>Nom</h1><p>' + donnees[2].nom + '</p>');
+            $('#t').append('<h1>Climat</h1><p>' + donnees[2].climat + '</p>');
+            $('#t').append('<h1>Naime pas</h1><p>' + donnees[2].naimepas + '</p>');
+            $('#t').append('<h1>Ennemi</h1><p>' + donnees[2].ennemi + '</p>');
+            $("#t").toggleClass("active"); 
+            $(".title_veg").toggleClass("active");
+            $(".bloc_veg1").toggleClass("active");
+            $(".bloc_veg2").toggleClass("active");             
           });
         });  
 
