@@ -5,6 +5,7 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' ">
         <link rel="stylesheet" type="text/css" href="css/pagelegume.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>Potager connecté</title>
@@ -50,9 +51,31 @@
     <script>
     $(function() {
 
+    $.ajax({
+        url: 'http://celinechamiot.pe.hu/potager/fiche.json',
+        type: 'GET',
+        datatype : "json",
+        setTimeout : 5000,
+        success: function(data)
+        {
+            console.log(data);
+        },
+        error:function()
+        {          
+            return false;  
+        }
+    })
       //CAROTTE
-        $('#carotte').click(function() {
-            $.getJSON('database.json', function(donnees) {
+       /* $('#carotte').click(function() {
+            $.ajax({
+             type: 'GET',
+            url :'http://celinechamiot.pe.hu/potager/fiche.json',
+            header: {'Access-Control-Allow-Origin': 'http://celinechamiot.pe.hu/'},
+            crossDomain: true, }
+
+
+
+            function(donnees) {
             $('#c').html('<h1>Nom</h1><p>' + donnees[0].nom + '</p>');
             $('#c').append('<h1>Climat</h1><p>' + donnees[0].climat + '</p>');
             $('#c').append('<h1>Naime pas</h1><p>' + donnees[0].naimepas + '</p>');
@@ -62,8 +85,8 @@
             $(".bloc_veg2").toggleClass("active");
             $(".bloc_veg3").toggleClass("active");
           });
-        });  
-
+        });  */
+/*
       //SALADE
         $('#salade').click(function() {
             $.getJSON('database.json', function(donnees) {
@@ -90,7 +113,7 @@
             $(".bloc_veg1").toggleClass("active");
             $(".bloc_veg2").toggleClass("active");             
           });
-        });  
+        }); */ 
 
       });
     </script>

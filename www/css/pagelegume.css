@@ -1,3 +1,15 @@
+h1#title{
+	margin-bottom: 50px;
+	background-color: #68B52C;
+	color: white;
+	text-transform: none;
+	padding: 10px;
+}
+
+body{
+	background-color: white !important;
+}
+
 /* --------------Afficher/Cacher bloc légumes ----------------*/
 
 [class*="bloc_veg"] {
@@ -14,6 +26,16 @@
 	width: 15%;
 	margin:  0 calc(54%/6) 0 calc(54%/6);
 	float: left;
+}
+
+.im_veg_border{
+	background:#ffffff;
+	border-radius:50%;
+	width:200px;
+	height:200px;
+	display:inline-block;
+	position: relative;
+	margin: 0px 1%;
 }
 
 /* --------------Titre du légume ----------------*/
