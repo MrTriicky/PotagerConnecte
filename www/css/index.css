@@ -130,7 +130,12 @@ h1 {
     padding-right: 20px;
 }
 
-
+.div {
+	border: 3px solid #ed3801;
+	height: 50px; width: 50px;
+	border-radius: 5px;
+	float: left;
+}
 
 
 

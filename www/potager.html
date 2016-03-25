@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' ">
+
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/meteo.css">
+        <link rel="stylesheet" type="text/css" href="css/pagelegume.css">
+
+        <title>Potager connecté</title>
+    </head>
+    <body>
+      <header>
+            <div class="hamburger">
+                <span></span>
+            </div> 
+            <nav>
+                <ul>
+                    <li class="title">Menu</li>
+                    <li><a href="#">Paramètres</a></li>
+                    <li><a href="pagelegume.html">Fiches techniques</a></li>
+                    <li><a href="index.html">Mes potagers</a></li>
+                    <li><a href="meteo.html">Météo</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div id="meteo">
+            <p>
+                <span class="strong pr">Mon-Potager-1</span> <span class="temp special">? </span>°C <span class="humidite special">? </span>% Hum.
+                <span id="button"><img src="img/arrows.svg" alt=""></span>
+            </p>
+        </div>
+
+      <h1>Fiches techniques des légumes</h1>
+
+        <script type="text/javascript" src="js/libs/jquery.js"></script>
+        <div class="row">
+            <div id="div1" class="div" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div id="div2" class="div" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div id="div3" class="div" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="row">
+            <div id="div4" class="div" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div id="div5" class="div" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div id="div6" class="div" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="row">
+            <div id="div7" class="div" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div id="div8" class="div" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div id="div9" class="div" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="row">
+            <div id="div10" class="div" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div id="div11" class="div" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div id="div12" class="div" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+
+        <img id="drag1" src="http://www.w3schools.com/html/img_logo.gif" draggable="true" ondragstart="drag(event)" width="336" height="69">
+
+<script>
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+</script>
+
+
+
+                <script> 
+
+            $('.hamburger').click(function() {
+                $('.hamburger').toggleClass('active');
+                $('nav').toggleClass('active');
+            });
+
+            var urlville = "";
+
+            $( document ).ready(function() {  
+
+                $.ajax({
+                    url: 'json/weather.json',
+                    dataType: 'json',
+                    success: function( reponse ) {
+                                    urlville = reponse.city.ville; 
+                                },
+
+                    error: function( req, status, err ) {
+                        console.log( 'something went wrong', status, err );
+                    } 
+                });
+
+            });
+
+            $("#button img").click(function() {
+                $.ajax({
+                    url: 'http://api.openweathermap.org/data/2.5/forecast/weather?q=' + urlville + '&APPID=e69b1050a4287b8f2591f7545a2c0a07',
+                    dataType: 'json',
+                    success: function( reponse ) {
+                                    $('.temp').html( Math.round(reponse.list[0].main.temp - 273.15) ); 
+                                    $('.humidite').html( reponse.list[0].main.humidity ); 
+                                },
+
+                    error: function( req, status, err ) {
+                        console.log( 'something went wrong', status, err );
+                    } 
+                })
+            });
+        </script>
+
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
+
+
+
