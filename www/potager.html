@@ -35,6 +35,10 @@
 		#potager img, #legume img {
 			width: 78px;
 		}
+		
+		#sonde {
+			border-color: green;
+		}
 	</style>
 </head>
 <body>
@@ -76,12 +80,13 @@
 		<div id="15" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 	</section>
 	<section id="legume">
+		<h2>Listes légumes</h2>
 		<img id="drag1" src="img/carotte.svg" class="carotte" draggable="true" ondragstart="drag(event)">
 		<img id="drag2" src="img/salade.svg" class="salade" draggable="true" ondragstart="drag(event)">
 	</section>
 	<script>
 		//Compteur 
-		var cpt;
+		var cpt = 2;
 		//Modèle : tableau 1D qui enregistre l'emplacement des légumes déposés
 		var legume = [];
 
@@ -110,10 +115,6 @@
 			console.log(legume);
 		}
 		
-		//Fonction qui compte le nombre de légumes dans le tableau
-		function compter(nomLegume){
-			
-		}
 	</script>
 	<script>
 		$('.hamburger').click(function () {
