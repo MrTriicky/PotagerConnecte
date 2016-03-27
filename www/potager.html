@@ -19,6 +19,7 @@
 	<style>
 		#potager section {
 			width: 300px;
+			margin:0 auto;
 		}
 		
 		#potager div {
@@ -75,10 +76,12 @@
 		<div id="15" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 	</section>
 	<section id="legume">
-		<img id="carotte" src="img/carotte.svg" draggable="true" ondragstart="drag(event)">
-		<img id="salade" src="img/salade.svg" draggable="true" ondragstart="drag(event)">
+		<img id="carotte" src="img/carotte.svg" class="carotte" draggable="true" ondragstart="drag(event)">
+		<img id="salade" src="img/salade.svg" class="salade" draggable="true" ondragstart="drag(event)">
 	</section>
 	<script>
+		//Compteur 
+		var cpt;
 		//Modèle : tableau 1D qui enregistre l'emplacement des légumes déposés
 		var legume = [];
 
@@ -91,16 +94,23 @@
 		}
 
 		function drop(ev) {
+			cpt++;
 			ev.preventDefault();
 			var data = ev.dataTransfer.getData("text");
 			var id = parseInt($(ev.target).attr("id"));
 			remplir(id, data);
 			ev.target.appendChild(document.getElementById(data));
+			$('#legume').prepend('<img id="'+data+'" src="img/'+data+'.svg" draggable="true" ondragstart="drag(event)">')
 		}
 
-		function remplir(id, legume) {
-			legume[id] = legume;
+		function remplir(id, nomLegume) {
+			legume[id] = nomLegume;
 			console.log(legume);
+		}
+		
+		//Fonction qui compte le nombre de légumes dans le tableau
+		function compter(nomLegume){
+			
 		}
 	</script>
 	<script>
