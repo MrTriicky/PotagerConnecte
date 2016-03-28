@@ -36,9 +36,15 @@
 			width: 78px;
 		}
 		
-		#sonde {
+		.sonde !important {
 			border-color: green;
 		}
+		
+		#sonde input {
+			width: 200px;
+			display: block;
+		}
+		
 	</style>
 </head>
 <body>
@@ -61,6 +67,11 @@
 			<span class="strong pr">Mon-Potager-1</span> <span class="temp special">? </span>°C <span class="humidite special">? </span>% Hum.
 			<span id="button"><img src="img/arrows.svg" alt=""></span>
 		</p>
+	</div>
+	<div id="sonde">
+		<h2>Ajouter une sonde</h2>
+		<input type="text" id="numeroSonde">
+		<input type="button" onClick="ajouterSonde($('#numeroSonde').val());" value="Ajouter">
 	</div>
 	<section id="potager">
 		<div id="1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
@@ -115,6 +126,9 @@
 			console.log(legume);
 		}
 		
+		function ajouterSonde(numero){
+			$("#"+numero).addClass("sonde");
+		}
 	</script>
 	<script>
 		$('.hamburger').click(function () {
