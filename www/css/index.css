@@ -176,13 +176,14 @@ body {
 
 #potager {
 	width: calc(74% - 20px);
-	min-width: 250px;
+	min-width: 200px;
 	display: block;
 	margin: 0 auto;
 	padding-top: 20px;
 	display: inline-block;
 	vertical-align: top;
 	padding-left: 20px;
+	float: left;
 }
 
 #potager div {
@@ -197,7 +198,7 @@ body {
 
 #potager img,
 #legume img {
-	width: 68px;
+	width: 70px;
 }
 
 

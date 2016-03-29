@@ -1,3 +1,23 @@
+h1#title{
+	margin-bottom: 50px;
+	background-color: #68B52C;
+	color: white;
+	text-transform: none;
+	padding: 10px;
+	text-align: center;
+	display: block;
+	font-family: "Open Sans";
+	font-size: 20px;
+}
+
+h1#title.active{
+	display: none;
+}
+
+body{
+	background-color: white;
+}
+
 /* --------------Afficher/Cacher bloc légumes ----------------*/
 
 [class*="bloc_veg"] {
@@ -16,18 +36,35 @@
 	float: left;
 }
 
+.img_veg.active{
+	width: 25%;
+}
+
+.im_veg_border{
+	background:#ffffff;
+	border-radius:50%;
+	width:200px;
+	height:200px;
+	display:inline-block;
+	position: relative;
+	margin: 0px 1%;
+}
+
 /* --------------Titre du légume ----------------*/
 
 h1.title_veg.active span{
 	color:#ED3801;
 	font-family: "Open Sans";
 	font-weight: 600;
+	font-size: 18px;
 }
 
 h1.title_veg.active{
 	float: left;
 	color:#68B52C;
+	font-family: "Open Sans";
 	text-align: inherit;
+	font-size: 18px;
 }
 
 /* --------------Barre ----------------*/
@@ -43,6 +80,7 @@ h1.title_veg.active{
 	font-family: "Open Sans";
 	font-weight: 600;
 	text-align: inherit;
+	font-size: 20px;
 }
 
 #c p, #s p, #t p{
@@ -64,6 +102,6 @@ h1.title_veg.active{
 	display: none;
 }
 
-#c.active, #s.active, #t.active, .title_veg.active{
+#c.active, #s.active, #t.active,  .title_veg.active{
 	display: block;
 }

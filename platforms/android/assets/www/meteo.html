@@ -20,7 +20,6 @@
             <nav>
                 <ul>
                     <li class="title">Menu</li>
-                    <li><a href="#">Paramètres</a></li>
                     <li><a href="pagelegume.html">Fiches techniques</a></li>
                     <li><a href="index.html">Mes potagers</a></li>
                     <li><a href="meteo.html">Météo</a></li>
@@ -33,6 +32,10 @@
                 <span class="strong pr">Mon-Potager-1</span> <span class="temp special">? </span>°C <span class="humidite special">? </span>% Hum.
                 <span id="button"><img src="img/arrows.svg" alt=""></span>
             </p>
+        </div>
+
+        <div id="arroser">
+            <p></p>
         </div>
 
         <div id="twodays" class="button">Charger les températures prévisionnelles</div>
@@ -66,10 +69,14 @@
 
             $( document ).ready(function() {  
                 $.ajax({
-                    url: 'json/weather.json',
+                    url: 'json/humidite.json',
                     dataType: 'json',
                     success: function( reponse ) {
-                                    urlville = reponse.city.ville; 
+                                    urlville = reponse.city;
+                                    arroser = reponse.arroser;
+                                    if (arroser == 1) {
+                                        $(' #arroser p ').html('Il fait chaud, il faut arroser !');
+                                    } 
                                 },
 
                     error: function( req, status, err ) {
@@ -120,6 +127,11 @@
                                             break;
 
                                         case "Rain":
+                                            $(' #demain ').css('background-color','#244a66');
+                                            $(' .ico ').html('<img src="img/rain.png" alt="">');
+                                            break;
+
+                                        case "Snow":
                                             $(' #demain ').css('background-color','#244a66');
                                             $(' .ico ').html('<img src="img/rain.png" alt="">');
                                             break;

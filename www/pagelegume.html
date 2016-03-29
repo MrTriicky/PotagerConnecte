@@ -22,7 +22,6 @@
             <nav>
                 <ul>
                     <li class="title">Menu</li>
-                    <li><a href="#">Paramètres</a></li>
                     <li><a href="pagelegume.html">Fiches techniques</a></li>
                     <li><a href="index.html">Mes potagers</a></li>
                     <li><a href="meteo.html">Météo</a></li>
@@ -37,7 +36,7 @@
             </p>
         </div>
 
-      <h1>Fiches techniques des légumes</h1>
+      <h1 id="title">Fiches techniques</h1>
 
       <!-- ////////////////////////TEST ///////////////////////////////////
               <form action=""> 
@@ -88,6 +87,8 @@
             $(".title_veg").toggleClass("active");
             $(".bloc_veg2").toggleClass("active");
             $(".bloc_veg3").toggleClass("active");
+            $("#title").toggleClass("active");
+            $(".img_veg").toggleClass("active");
           });
         });  
 
@@ -101,7 +102,9 @@
             $("#s").toggleClass("active"); 
             $(".title_veg").toggleClass("active");
             $(".bloc_veg1").toggleClass("active");
-            $(".bloc_veg3").toggleClass("active");         
+            $(".bloc_veg3").toggleClass("active");   
+            $("#title").toggleClass("active");
+            $(".img_veg").toggleClass("active");      
           });
         });  
 
@@ -115,7 +118,9 @@
             $("#t").toggleClass("active"); 
             $(".title_veg").toggleClass("active");
             $(".bloc_veg1").toggleClass("active");
-            $(".bloc_veg2").toggleClass("active");             
+            $(".bloc_veg2").toggleClass("active"); 
+            $("#title").toggleClass("active");
+            $(".img_veg").toggleClass("active");            
           });
         });  
 

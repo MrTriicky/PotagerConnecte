@@ -73,7 +73,6 @@ header {
 		}
 
 #meteo {
-	font-family: 'PoetsenOne-Regular';
 	background-color: #68b52c;
 	height: 50px;
 	color: white;
@@ -124,21 +123,20 @@ nav.active {
 }
 
 	nav ul li:first-child {
-		font-family: 'PoetsenOne-Regular';
 		text-align: center;
-		padding-left: 0;
 	}
 
 	nav ul li:nth-child(2) {
-		margin-top: 60px;
+		margin-top: 20px;
 	}
 
 	nav ul li {
-		padding-left: 30px;
+		text-align: left;
 		height: 50px;
 		line-height: 50px;
 		text-transform: uppercase;
 		color: white;
+		padding-left: 20px;
 	}
 
 	nav ul li.title {
@@ -149,7 +147,7 @@ nav.active {
 			color: #ed3801;
 			text-decoration: none;
 			font-weight: 700;
-			font-size: 16px;
+			font-size: 20px;
 		}
 
 input[type="text"] {
@@ -205,15 +203,34 @@ input[type="text"] {
 
 #demain .special,
 #apres-demain .special {
-	font-family: 'PoetsenOne-Regular';
 	font-size: 16px;
 }
 
 #twodays {
-	font-family: 'PoetsenOne-Regular';
 	cursor: pointer;
 }
 
 .strong {
 	font-weight: 700;
 }
+
+#meteo,
+#arroser {	
+    font-family: 'PoetsenOne-Regular';	
+    background-color: #68b52c;
+    color: white;	
+}
+
+#arroser {
+	background-color: #d80f0f;
+}
+
+	#meteo p,
+	#arroser p {
+		line-height: 50px;
+		text-align: center;
+	}
+
+	#arroser p {
+		line-height: 50px;
+	}
